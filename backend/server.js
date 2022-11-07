@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/userRoutes')
@@ -12,6 +13,10 @@ app.use(express.json())
 app.use('/api/user', userRoutes)
 app.use('/api/story', storyRoutes)
 app.use('/api/entry', entryRoutes)
+
+// https://youtu.be/UXjMo25Nnvc
+app.use(express.static(path.join(__dirname, 'dist')))
+app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'dist', 'index.html')))
 
 app.use((err, req, res, next) => {
     console.log(err)
