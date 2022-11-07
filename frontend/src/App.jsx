@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import CreateStory from './pages/CreateStory'
 import ViewStory from './pages/ViewStory'
+import Stories from './pages/Stories'
 import { AuthContextProvider } from './contexts/authContext'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/create-story" element={<CreateStory/>}/>
             <Route path="/view-story/:storyId" element={<ViewStory/>}/>
+            <Route path="/stories" element={<Stories/>}/>
           </Routes>
         </div>
       </BrowserRouter>

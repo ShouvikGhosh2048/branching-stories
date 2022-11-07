@@ -2,6 +2,11 @@ const asyncHandler = require('express-async-handler')
 const Story = require('../models/storyModel')
 const Entry = require('../models/entryModel')
 
+const getStories = asyncHandler(async (req, res) => {
+    const story = await Story.find({}).populate('author', 'username')
+    res.status(200).json(story)
+})
+
 const getStory = asyncHandler(async (req, res) => {
     // https://mongoosejs.com/docs/populate.html#field-selection
     const story = await Story.findById(req.params.storyId).populate('author', 'username')
@@ -61,4 +66,4 @@ const addEntryToStory = asyncHandler(async (req, res) => {
     res.status(200).json(entry)
 })
 
-module.exports = { getStory, getStoryEntries, createStory, addEntryToStory }
+module.exports = { getStories, getStory, getStoryEntries, createStory, addEntryToStory }
