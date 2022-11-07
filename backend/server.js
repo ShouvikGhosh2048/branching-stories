@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/userRoutes')
+const storyRoutes = require('./routes/storyRoutes')
+const entryRoutes = require('./routes/entryRoutes')
 require('dotenv').config()
 
 const app = express()
@@ -8,6 +10,8 @@ const app = express()
 app.use(express.json())
 
 app.use('/api/user', userRoutes)
+app.use('/api/story', storyRoutes)
+app.use('/api/entry', entryRoutes)
 
 app.use((err, req, res, next) => {
     console.log(err)
